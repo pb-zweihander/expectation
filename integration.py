@@ -1,13 +1,21 @@
 
 from __future__ import division
-import math
-
-e = 2.718281828
+from math import *
 
 def z(x):
-	return math.pow(e, (0-(x*x))/2)/math.sqrt(2*math.pi)
+	return pow(e, (0-(x*x))/2)/sqrt(2*pi)
 
-def integLeft(a, b, f, nbins=10):
+def sigma(f, a, b):
+	s = 0.0
+	
+	x = a
+	while(x <= b):
+		s = s + f(x)
+		x = x + 1
+
+	return s
+
+def integLeft(f, a, b, nbins=10):
 	h = float(b-a)/nbins
 	assert h > 0
 	assert type(nbins) == int
@@ -19,7 +27,7 @@ def integLeft(a, b, f, nbins=10):
 	return s
 
 
-def integMid(a, b, f, nbins=10):
+def integMid(f, a, b, nbins=10):
 	h = float(b-a)/nbins
 	assert h > 0
 	assert type(nbins) == int
@@ -32,7 +40,7 @@ def integMid(a, b, f, nbins=10):
 	
 	return s
 
-def integTrap(a, b, f, nbins=10):
+def integTrap(f, a, b, nbins=10):
 	h = float(b-a)/nbins
 	assert h > 0
 	assert type(nbins) == int
@@ -42,3 +50,4 @@ def integTrap(a, b, f, nbins=10):
 		s = s + h * f(a + n*h)
 	
 	return s
+
