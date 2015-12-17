@@ -4,9 +4,9 @@ from expectation import *
 from matplotlib import pyplot
 import numpy
 
-arr = getExpectation(xbar=0, s=1, n=100, a=0.01, b=5, nbins=500, pr=True, pl=True, sh=True, plfn='result.png')
+arr = getExpectation(xbar=0, s=1, n=100, a=0.01, b=5, nbins=500, pr=True)
 
-fig = pyplot.plot()
+fig = pyplot.figure()
 ax = fig.add_subplot(1, 1, 1)
 
 for (za, exp, mn, mp) in arr:
